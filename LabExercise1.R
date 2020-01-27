@@ -110,4 +110,115 @@ boxplot(EPI_data$EPI, EPI_data$WATER_H)
 qqplot(EPI_data$EPI, EPI_data$WATER_H)
 
 ## Exercise 2
-EPILand <- EPI_data$EPI[!landlock]
+EPILand <- EPI[!Landlock]
+Eland <- EPILand[!is.na(EPILand)]
+hist(Eland)
+hist(Eland, seq(30., 95., 1.0), prob = TRUE)
+
+tf <- is.na(Eland)
+E <- Eland[!tf]
+
+summary(Eland)
+
+fivenum(Eland, na.rm = TRUE)
+stem(Eland)
+hist(Eland)
+hist(Eland, seq(30.,95.,1.0), prob = TRUE)
+lines(density(Eland, na.rm = TRUE, bw = "SJ")) 
+
+rug(Eland)
+
+#CDF 
+plot(ecdf(Eland), do.points = FALSE, verticals = TRUE) 
+
+#Quartile - Quartile
+par(pty = "s")
+qqnorm(Eland); qqline(Eland)
+x <- seq(30,95,1)
+qqplot(qt(ppoints(250), df = 5), x, xlab = "Q-Q plot for t dsn")
+qqline(x)
+
+# No Surface Water 
+EPInosurfacewater <- EPI[!No_surface_water]
+ENowater <- EPInosurfacewater[!is.na(EPInosurfacewater)]
+hist(ENowater)
+hist(ENowater, seq(30., 95., 1.0), prob = TRUE)
+
+tf <- is.na(ENowater)
+E <- ENowater[!tf]
+
+summary(ENowater)
+
+fivenum(ENowater, na.rm = TRUE)
+stem(ENowater)
+hist(ENowater)
+hist(ENowater, seq(30.,95.,1.0), prob = TRUE)
+lines(density(ENowater, na.rm = TRUE, bw = "SJ")) 
+
+rug(ENowater)
+
+#CDF 
+plot(ecdf(ENowater), do.points = FALSE, verticals = TRUE) 
+
+#Quartile - Quartile
+par(pty = "s")
+qqnorm(ENowater); qqline(ENowater)
+x <- seq(30,95,1)
+qqplot(qt(ppoints(250), df = 5), x, xlab = "Q-Q plot for t dsn")
+qqline(x)
+
+#Desert
+EPIDesert <- EPI[!Desert]
+EDesert <- EPIDesert[!is.na(EPIDesert)]
+hist(EDesert)
+hist(EDesert, seq(30., 95., 1.0), prob = TRUE)
+
+tf <- is.na(EDesert)
+E <- EDesert[!tf]
+
+summary(EDesert)
+
+fivenum(EDesert, na.rm = TRUE)
+stem(EDesert)
+hist(EDesert)
+hist(EDesert, seq(30.,95.,1.0), prob = TRUE)
+lines(density(EDesert, na.rm = TRUE, bw = "SJ")) 
+
+rug(EDesert)
+
+#CDF 
+plot(ecdf(EDesert), do.points = FALSE, verticals = TRUE) 
+
+#Quartile - Quartile
+par(pty = "s")
+qqnorm(EDesert); qqline(EDesert)
+x <- seq(30,95,1)
+qqplot(qt(ppoints(250), df = 5), x, xlab = "Q-Q plot for t dsn")
+
+# High Population Density
+EPIHighPopulationDensity <- EPI[!High_Population_Density]
+Epopdensity <- EPIHighPopulationDensity[!is.na(EPIHighPopulationDensity)]
+hist(Epopdensity)
+hist(Epopdensity, seq(30., 95., 1.0), prob = TRUE)
+
+tf <- is.na(Epopdensity)
+E <- Epopdensity[!tf]
+
+summary(Epopdensity)
+
+fivenum(Epopdensity, na.rm = TRUE)
+stem(Epopdensity)
+hist(Epopdensity)
+hist(Epopdensity, seq(30.,95.,1.0), prob = TRUE)
+lines(density(Epopdensity, na.rm = TRUE, bw = "SJ")) 
+
+rug(Epopdensity)
+
+#CDF 
+plot(ecdf(Epopdensity), do.points = FALSE, verticals = TRUE) 
+
+#Quartile - Quartile
+par(pty = "s")
+qqnorm(Epopdensity); qqline(Epopdensity)
+x <- seq(30,95,1)
+qqplot(qt(ppoints(250), df = 5), x, xlab = "Q-Q plot for t dsn")
