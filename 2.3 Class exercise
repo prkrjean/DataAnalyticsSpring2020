@@ -1,0 +1,65 @@
+# Read the csv file 
+multivariate <- read.csv("C:/Users/prkrj/OneDrive/Data analytics/multivariate (1).csv")
+attach(multivariate)
+names(multivariate)
+
+# create some Scatterplots
+plot(Income, Immigrant, main = "Scatterplot")
+plot(Immigrant,Homeowners)
+
+# Fitting Linear Models using 'lm' function 
+help(lm)
+mm <- lm(Homeowners ~ Immigrant)
+mm
+plot(Immigrant, Homeowners)
+
+# Fitting Linear Models using 'lm' function 
+help(lm)
+mm <- lm(Homeowners ~ Immigrant)
+mm
+plot(Immigrant, Homeowners)
+abline(mm)
+abline(mm, col=2, lwd=3)
+
+summary(mm)
+attributes(mm)
+mm$coefficients
+
+plot(Homeowners,Immigrant)
+
+HP <- Homeowners/Population
+PD <- Population/area
+mm <- lm(Immigrant~Income + Population + HP + PD)
+summary(mm)
+
+cm <- coef(mm)
+cm
+
+# Pipe operator: %>%
+library(dplyr)
+df_mtcars <- mtcars
+head(df_mtcars)
+
+#nesting 
+filter(df_mtcars, mpg > 20)
+# we want to get 10 samples of that 
+sample_n(filter(df_mtcars, mpg > 20), 10)
+# now we want to arrange them in the descending order based on the mpg
+arrange(sample_n(filter(df_mtcars, mpg > 20), 10),desc(mpg))
+# we can assign the result to a varible called results_mpg
+results_mpg <- arrange(sample_n(filter(df_mtcars, mpg > 20), 10),desc(mpg))
+results_mpg
+
+# you can do the same thing what you did above by multiple assignments
+a1 <- filter(df_mtcars, mpg > 20)
+a2 <- sample_n(a1, 5)
+results_mpg_des <- arrange(a2, desc(mpg))
+results_mpg_des
+
+# instead of using the multiple assignments, you can use Pipe Operator to 
+# do it in a single line
+library(dplyr)
+# you can do the above using the Pipe Operator %>%
+# Example: dataFrame %>% operatoin1 %>% operation2 %>% operation3
+df_mtcars %>% filter(mpg >20) %>% sample_n(5 %>% arrgange(desc(mpg))
+results <- df_mtcars%>% filter(mpg > 20) %>% sample_n(5) %>% arrange(desc(mpg))                                            
